@@ -31,7 +31,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/app/outputs/flutter-apk/app-dev-release.apk
+          file: build/app/outputs/flutter-apk/app-release.apk
           tag: v2.0
           overwrite: true
           body: "This is android release"
