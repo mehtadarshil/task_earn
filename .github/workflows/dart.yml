@@ -1,9 +1,45 @@
 name: iOS-ipa-build
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: cedvdb/action-flutter-build-android@v1
+        with:
+          # keystore-base64: ${{ secrets.ANDROID_RELEASE_KEY }}
+          # keystore-password: "${{ secrets.ANDROID_RELEASE_KEY_PASSWORD }}"
+          flutter-version: '1.20.5'
+          channel: 'beta'
+          # optionals
+          build-cmd: flutter build apk --release
+          working-directory: ./
+          
+      - name: Archive APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-apk
+          # Try running the build locally with the build command to be sure of this path
+          path: build/app/outputs/flutter-apk/app-dev-release.apk
+          
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/app/outputs/flutter-apk/app-release.apk
+          tag: v2.0
+          overwrite: true
+          body: "This is android release"
+
+
+          
   build-ios:
     name: 🎉 iOS Build
     runs-on: macos-latest
@@ -39,4 +75,4 @@ jobs:
           file: build/ios/iphoneos/FlutterIpaExport.ipa
           tag: v1.0
           overwrite: true
-          body: "This is first release"
+          body: "This is ios release"
