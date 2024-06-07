@@ -15,7 +15,7 @@ jobs:
       - uses: cedvdb/action-flutter-build-android@v1
         with:
           # optionals
-          build-cmd: flutter build apk --release --flavor dev
+          build-cmd: flutter build apk --release
           working-directory: ./
           
       - name: Archive APK
