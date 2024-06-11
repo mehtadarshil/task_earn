@@ -38,9 +38,15 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
   flutter_animate: ^4.5.0
-  flutter_svg: ^2.0.10+1
+  flutter_svg: ^1.1.6
   intl: ^0.19.0
   connectivity_plus: ^6.0.3
+  rive: ^0.9.1
+  country_picker: ^2.0.20
+
+  #firebase packages
+  firebase_core: ^3.0.0
+  firebase_auth: ^5.0.0
 
 dev_dependencies:
   build_runner:
@@ -73,9 +79,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/animations/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -94,46 +100,46 @@ flutter:
       - asset: assets/fonts/AnekDevanagari-Bold.ttf
   - family: AnekDevanagari-Condensed-Bold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Condensed-Bold.ttf
+      - asset: assets/fonts/AnekDevanagari_Condensed-Bold.ttf
   - family: AnekDevanagari-Condensed-ExtraBold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Condensed-ExtraBold.ttf
+      - asset: assets/fonts/AnekDevanagari_Condensed-ExtraBold.ttf
   - family: AnekDevanagari-Condensed-Light
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Condensed-Light.ttf
+      - asset: assets/fonts/AnekDevanagari_Condensed-Light.ttf
   - family: AnekDevanagari-Condensed-Medium
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Condensed-Medium.ttf
+      - asset: assets/fonts/AnekDevanagari_Condensed-Medium.ttf
   - family: AnekDevanagari-Condensed-Regular
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Condensed-Regular.ttf
+      - asset: assets/fonts/AnekDevanagari_Condensed-Regular.ttf
   - family: AnekDevanagari-Condensed-SemiBold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Condensed-SemiBold.ttf
+      - asset: assets/fonts/AnekDevanagari_Condensed-SemiBold.ttf
   - family: AnekDevanagari-Condensed-Thin
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Condensed-Thin.ttf
+      - asset: assets/fonts/AnekDevanagari_Condensed-Thin.ttf
   - family: AnekDevanagari-Expanded-Bold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Expanded-Bold.ttf
+      - asset: assets/fonts/AnekDevanagari_Expanded-Bold.ttf
   - family: AnekDevanagari-Expanded-ExtraBold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Expanded-ExtraBold.ttf
+      - asset: assets/fonts/AnekDevanagari_Expanded-ExtraBold.ttf
   - family: AnekDevanagari-Expanded-Light
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Expanded-Light.ttf
+      - asset: assets/fonts/AnekDevanagari_Expanded-Light.ttf
   - family: AnekDevanagari-Expanded-Medium
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Expanded-Medium.ttf
+      - asset: assets/fonts/AnekDevanagari_Expanded-Medium.ttf
   - family: AnekDevanagari-Expanded-Regular
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Expanded-Regular.ttf
+      - asset: assets/fonts/AnekDevanagari_Expanded-Regular.ttf
   - family: AnekDevanagari-Expanded-SemiBold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Expanded-SemiBold.ttf
+      - asset: assets/fonts/AnekDevanagari_Expanded-SemiBold.ttf
   - family: AnekDevanagari-Expanded-Thin
     fonts:
-      - asset: assets/fonts/AnekDevanagari-Expanded-Thin.ttf
+      - asset: assets/fonts/AnekDevanagari_Expanded-Thin.ttf
   - family: AnekDevanagari-ExtraBold
     fonts:
       - asset: assets/fonts/AnekDevanagari-ExtraBold.ttf
@@ -154,46 +160,46 @@ flutter:
       - asset: assets/fonts/AnekDevanagari-SemiBold.ttf
   - family: AnekDevanagari-SemiCondensed-Bold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiCondensed-Bold.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Bold.ttf
   - family: AnekDevanagari-SemiCondensed-ExtraBold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiCondensed-ExtraBold.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiCondensed-ExtraBold.ttf
   - family: AnekDevanagari-SemiCondensed-Light
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiCondensed-Light.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Light.ttf
   - family: AnekDevanagari-SemiCondensed-Medium
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiCondensed-Medium.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Medium.ttf
   - family: AnekDevanagari-SemiCondensed-Regular
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiCondensed-Regular.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Regular.ttf
   - family: AnekDevanagari-SemiCondensed-SemiBold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiCondensed-SemiBold.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiCondensed-SemiBold.ttf
   - family: AnekDevanagari-SemiCondensed-Thin
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiCondensed-Thin.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Thin.ttf
   - family: AnekDevanagari-SemiExpanded-Bold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiExpanded-Bold.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Bold.ttf
   - family: AnekDevanagari-SemiExpanded-ExtraBold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiExpanded-ExtraBold.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiExpanded-ExtraBold.ttf
   - family: AnekDevanagari-SemiExpanded-Light
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiExpanded-Light.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Light.ttf
   - family: AnekDevanagari-SemiExpanded-Medium
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiExpanded-Medium.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Medium.ttf
   - family: AnekDevanagari-SemiExpanded-Regular
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiExpanded-Regular.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Regular.ttf
   - family: AnekDevanagari-SemiExpanded-SemiBold
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiExpanded-SemiBold.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiExpanded-SemiBold.ttf
   - family: AnekDevanagari-SemiExpanded-Thin
     fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiExpanded-Thin.ttf
+      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Thin.ttf
   - family: AnekDevanagari-Thin
     fonts:
       - asset: assets/fonts/AnekDevanagari-Thin.ttf
