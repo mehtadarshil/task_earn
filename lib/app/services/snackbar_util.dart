@@ -16,7 +16,7 @@ class SnackBarUtil {
         style: TextStyle(
             color: AppColors.whiteColor,
             fontSize: 15,
-            fontFamily: FontFamily.anekDevanagariBold),
+            fontFamily: FontFamily.poppinsSemiBold),
       ),
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       animationDuration: const Duration(milliseconds: 600),

@@ -9,4 +9,10 @@ class Strings {
   static const strYouEnteredInvalidNumber = "You Have Entered Invalid Number";
   static const strErrorOccured = 'Error Occured';
   static const strProperNumber = 'Please enter proper number';
+  static const strInvalidOtpError = "You Have Entered Wrong Otp";
+  static const strLoginFailed = "Login Failed";
+  static const strPleaseEnterOtp = 'Please Enter OTP';
+  static const strEnterOTPsentto = "Enter OTP sent to ";
+  static const strResendOTP = "Resend OTP";
+  static const strVerifyOTP = "Verify OTP";
 }

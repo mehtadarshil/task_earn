@@ -42,11 +42,13 @@ dependencies:
   intl: ^0.19.0
   connectivity_plus: ^6.0.3
   rive: ^0.9.1
-  country_picker: ^2.0.20
+  country_picker: ^2.0.26
+  pinput: ^5.0.0
 
   #firebase packages
-  firebase_core: ^3.0.0
-  firebase_auth: ^5.0.0
+  firebase_core: ^3.1.0
+  firebase_auth: ^5.1.0
+  cloud_firestore: ^5.0.1
 
 dev_dependencies:
   build_runner:
@@ -95,114 +97,60 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-  - family: AnekDevanagari-Bold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari-Bold.ttf
-  - family: AnekDevanagari-Condensed-Bold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Condensed-Bold.ttf
-  - family: AnekDevanagari-Condensed-ExtraBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Condensed-ExtraBold.ttf
-  - family: AnekDevanagari-Condensed-Light
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Condensed-Light.ttf
-  - family: AnekDevanagari-Condensed-Medium
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Condensed-Medium.ttf
-  - family: AnekDevanagari-Condensed-Regular
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Condensed-Regular.ttf
-  - family: AnekDevanagari-Condensed-SemiBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Condensed-SemiBold.ttf
-  - family: AnekDevanagari-Condensed-Thin
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Condensed-Thin.ttf
-  - family: AnekDevanagari-Expanded-Bold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Expanded-Bold.ttf
-  - family: AnekDevanagari-Expanded-ExtraBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Expanded-ExtraBold.ttf
-  - family: AnekDevanagari-Expanded-Light
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Expanded-Light.ttf
-  - family: AnekDevanagari-Expanded-Medium
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Expanded-Medium.ttf
-  - family: AnekDevanagari-Expanded-Regular
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Expanded-Regular.ttf
-  - family: AnekDevanagari-Expanded-SemiBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Expanded-SemiBold.ttf
-  - family: AnekDevanagari-Expanded-Thin
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_Expanded-Thin.ttf
-  - family: AnekDevanagari-ExtraBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari-ExtraBold.ttf
-  - family: AnekDevanagari-ExtraLight
-    fonts:
-      - asset: assets/fonts/AnekDevanagari-ExtraLight.ttf
-  - family: AnekDevanagari-Light
-    fonts:
-      - asset: assets/fonts/AnekDevanagari-Light.ttf
-  - family: AnekDevanagari-Medium
-    fonts:
-      - asset: assets/fonts/AnekDevanagari-Medium.ttf
-  - family: AnekDevanagari-Regular
-    fonts:
-      - asset: assets/fonts/AnekDevanagari-Regular.ttf
-  - family: AnekDevanagari-SemiBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari-SemiBold.ttf
-  - family: AnekDevanagari-SemiCondensed-Bold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Bold.ttf
-  - family: AnekDevanagari-SemiCondensed-ExtraBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiCondensed-ExtraBold.ttf
-  - family: AnekDevanagari-SemiCondensed-Light
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Light.ttf
-  - family: AnekDevanagari-SemiCondensed-Medium
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Medium.ttf
-  - family: AnekDevanagari-SemiCondensed-Regular
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Regular.ttf
-  - family: AnekDevanagari-SemiCondensed-SemiBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiCondensed-SemiBold.ttf
-  - family: AnekDevanagari-SemiCondensed-Thin
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiCondensed-Thin.ttf
-  - family: AnekDevanagari-SemiExpanded-Bold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Bold.ttf
-  - family: AnekDevanagari-SemiExpanded-ExtraBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiExpanded-ExtraBold.ttf
-  - family: AnekDevanagari-SemiExpanded-Light
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Light.ttf
-  - family: AnekDevanagari-SemiExpanded-Medium
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Medium.ttf
-  - family: AnekDevanagari-SemiExpanded-Regular
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Regular.ttf
-  - family: AnekDevanagari-SemiExpanded-SemiBold
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiExpanded-SemiBold.ttf
-  - family: AnekDevanagari-SemiExpanded-Thin
-    fonts:
-      - asset: assets/fonts/AnekDevanagari_SemiExpanded-Thin.ttf
-  - family: AnekDevanagari-Thin
-    fonts:
-      - asset: assets/fonts/AnekDevanagari-Thin.ttf
+    - family: Poppins-BlackItalic
+      fonts:
+        - asset: assets/fonts/Poppins-BlackItalic.ttf
+    - family: Poppins-Black
+      fonts:
+        - asset: assets/fonts/Poppins-Black.ttf
+    - family: Poppins-BoldItalic
+      fonts:
+        - asset: assets/fonts/Poppins-BoldItalic.ttf
+    - family: Poppins-Bold
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+    - family: Poppins-ExtraBoldItalic
+      fonts:
+        - asset: assets/fonts/Poppins-ExtraBoldItalic.ttf
+    - family: Poppins-ExtraBold
+      fonts:
+        - asset: assets/fonts/Poppins-ExtraBold.ttf
+    - family: Poppins-ExtraLightItalic
+      fonts:
+        - asset: assets/fonts/Poppins-ExtraLightItalic.ttf
+    - family: Poppins-ExtraLight
+      fonts:
+        - asset: assets/fonts/Poppins-ExtraLight.ttf
+    - family: Poppins-Italic
+      fonts:
+        - asset: assets/fonts/Poppins-Italic.ttf
+    - family: Poppins-LightItalic
+      fonts:
+        - asset: assets/fonts/Poppins-LightItalic.ttf
+    - family: Poppins-Light
+      fonts:
+        - asset: assets/fonts/Poppins-Light.ttf
+    - family: Poppins-MediumItalic
+      fonts:
+        - asset: assets/fonts/Poppins-MediumItalic.ttf
+    - family: Poppins-Medium
+      fonts:
+        - asset: assets/fonts/Poppins-Medium.ttf
+    - family: Poppins-Regular
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+    - family: Poppins-SemiBoldItalic
+      fonts:
+        - asset: assets/fonts/Poppins-SemiBoldItalic.ttf
+    - family: Poppins-SemiBold
+      fonts:
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+    - family: Poppins-ThinItalic
+      fonts:
+        - asset: assets/fonts/Poppins-ThinItalic.ttf
+    - family: Poppins-Thin
+      fonts:
+        - asset: assets/fonts/Poppins-Thin.ttf
 
   # fonts:
   #   - family: Schyler

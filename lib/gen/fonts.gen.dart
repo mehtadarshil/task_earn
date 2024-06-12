@@ -10,139 +10,57 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: AnekDevanagari-Bold
-  static const String anekDevanagariBold = 'AnekDevanagari-Bold';
+  /// Font family: Poppins-Black
+  static const String poppinsBlack = 'Poppins-Black';
 
-  /// Font family: AnekDevanagari-Condensed-Bold
-  static const String anekDevanagariCondensedBold =
-      'AnekDevanagari-Condensed-Bold';
+  /// Font family: Poppins-BlackItalic
+  static const String poppinsBlackItalic = 'Poppins-BlackItalic';
 
-  /// Font family: AnekDevanagari-Condensed-ExtraBold
-  static const String anekDevanagariCondensedExtraBold =
-      'AnekDevanagari-Condensed-ExtraBold';
+  /// Font family: Poppins-Bold
+  static const String poppinsBold = 'Poppins-Bold';
 
-  /// Font family: AnekDevanagari-Condensed-Light
-  static const String anekDevanagariCondensedLight =
-      'AnekDevanagari-Condensed-Light';
+  /// Font family: Poppins-BoldItalic
+  static const String poppinsBoldItalic = 'Poppins-BoldItalic';
 
-  /// Font family: AnekDevanagari-Condensed-Medium
-  static const String anekDevanagariCondensedMedium =
-      'AnekDevanagari-Condensed-Medium';
+  /// Font family: Poppins-ExtraBold
+  static const String poppinsExtraBold = 'Poppins-ExtraBold';
 
-  /// Font family: AnekDevanagari-Condensed-Regular
-  static const String anekDevanagariCondensedRegular =
-      'AnekDevanagari-Condensed-Regular';
+  /// Font family: Poppins-ExtraBoldItalic
+  static const String poppinsExtraBoldItalic = 'Poppins-ExtraBoldItalic';
 
-  /// Font family: AnekDevanagari-Condensed-SemiBold
-  static const String anekDevanagariCondensedSemiBold =
-      'AnekDevanagari-Condensed-SemiBold';
+  /// Font family: Poppins-ExtraLight
+  static const String poppinsExtraLight = 'Poppins-ExtraLight';
 
-  /// Font family: AnekDevanagari-Condensed-Thin
-  static const String anekDevanagariCondensedThin =
-      'AnekDevanagari-Condensed-Thin';
+  /// Font family: Poppins-ExtraLightItalic
+  static const String poppinsExtraLightItalic = 'Poppins-ExtraLightItalic';
 
-  /// Font family: AnekDevanagari-Expanded-Bold
-  static const String anekDevanagariExpandedBold =
-      'AnekDevanagari-Expanded-Bold';
+  /// Font family: Poppins-Italic
+  static const String poppinsItalic = 'Poppins-Italic';
 
-  /// Font family: AnekDevanagari-Expanded-ExtraBold
-  static const String anekDevanagariExpandedExtraBold =
-      'AnekDevanagari-Expanded-ExtraBold';
+  /// Font family: Poppins-Light
+  static const String poppinsLight = 'Poppins-Light';
 
-  /// Font family: AnekDevanagari-Expanded-Light
-  static const String anekDevanagariExpandedLight =
-      'AnekDevanagari-Expanded-Light';
+  /// Font family: Poppins-LightItalic
+  static const String poppinsLightItalic = 'Poppins-LightItalic';
 
-  /// Font family: AnekDevanagari-Expanded-Medium
-  static const String anekDevanagariExpandedMedium =
-      'AnekDevanagari-Expanded-Medium';
+  /// Font family: Poppins-Medium
+  static const String poppinsMedium = 'Poppins-Medium';
 
-  /// Font family: AnekDevanagari-Expanded-Regular
-  static const String anekDevanagariExpandedRegular =
-      'AnekDevanagari-Expanded-Regular';
+  /// Font family: Poppins-MediumItalic
+  static const String poppinsMediumItalic = 'Poppins-MediumItalic';
 
-  /// Font family: AnekDevanagari-Expanded-SemiBold
-  static const String anekDevanagariExpandedSemiBold =
-      'AnekDevanagari-Expanded-SemiBold';
+  /// Font family: Poppins-Regular
+  static const String poppinsRegular = 'Poppins-Regular';
 
-  /// Font family: AnekDevanagari-Expanded-Thin
-  static const String anekDevanagariExpandedThin =
-      'AnekDevanagari-Expanded-Thin';
+  /// Font family: Poppins-SemiBold
+  static const String poppinsSemiBold = 'Poppins-SemiBold';
 
-  /// Font family: AnekDevanagari-ExtraBold
-  static const String anekDevanagariExtraBold = 'AnekDevanagari-ExtraBold';
+  /// Font family: Poppins-SemiBoldItalic
+  static const String poppinsSemiBoldItalic = 'Poppins-SemiBoldItalic';
 
-  /// Font family: AnekDevanagari-ExtraLight
-  static const String anekDevanagariExtraLight = 'AnekDevanagari-ExtraLight';
+  /// Font family: Poppins-Thin
+  static const String poppinsThin = 'Poppins-Thin';
 
-  /// Font family: AnekDevanagari-Light
-  static const String anekDevanagariLight = 'AnekDevanagari-Light';
-
-  /// Font family: AnekDevanagari-Medium
-  static const String anekDevanagariMedium = 'AnekDevanagari-Medium';
-
-  /// Font family: AnekDevanagari-Regular
-  static const String anekDevanagariRegular = 'AnekDevanagari-Regular';
-
-  /// Font family: AnekDevanagari-SemiBold
-  static const String anekDevanagariSemiBold = 'AnekDevanagari-SemiBold';
-
-  /// Font family: AnekDevanagari-SemiCondensed-Bold
-  static const String anekDevanagariSemiCondensedBold =
-      'AnekDevanagari-SemiCondensed-Bold';
-
-  /// Font family: AnekDevanagari-SemiCondensed-ExtraBold
-  static const String anekDevanagariSemiCondensedExtraBold =
-      'AnekDevanagari-SemiCondensed-ExtraBold';
-
-  /// Font family: AnekDevanagari-SemiCondensed-Light
-  static const String anekDevanagariSemiCondensedLight =
-      'AnekDevanagari-SemiCondensed-Light';
-
-  /// Font family: AnekDevanagari-SemiCondensed-Medium
-  static const String anekDevanagariSemiCondensedMedium =
-      'AnekDevanagari-SemiCondensed-Medium';
-
-  /// Font family: AnekDevanagari-SemiCondensed-Regular
-  static const String anekDevanagariSemiCondensedRegular =
-      'AnekDevanagari-SemiCondensed-Regular';
-
-  /// Font family: AnekDevanagari-SemiCondensed-SemiBold
-  static const String anekDevanagariSemiCondensedSemiBold =
-      'AnekDevanagari-SemiCondensed-SemiBold';
-
-  /// Font family: AnekDevanagari-SemiCondensed-Thin
-  static const String anekDevanagariSemiCondensedThin =
-      'AnekDevanagari-SemiCondensed-Thin';
-
-  /// Font family: AnekDevanagari-SemiExpanded-Bold
-  static const String anekDevanagariSemiExpandedBold =
-      'AnekDevanagari-SemiExpanded-Bold';
-
-  /// Font family: AnekDevanagari-SemiExpanded-ExtraBold
-  static const String anekDevanagariSemiExpandedExtraBold =
-      'AnekDevanagari-SemiExpanded-ExtraBold';
-
-  /// Font family: AnekDevanagari-SemiExpanded-Light
-  static const String anekDevanagariSemiExpandedLight =
-      'AnekDevanagari-SemiExpanded-Light';
-
-  /// Font family: AnekDevanagari-SemiExpanded-Medium
-  static const String anekDevanagariSemiExpandedMedium =
-      'AnekDevanagari-SemiExpanded-Medium';
-
-  /// Font family: AnekDevanagari-SemiExpanded-Regular
-  static const String anekDevanagariSemiExpandedRegular =
-      'AnekDevanagari-SemiExpanded-Regular';
-
-  /// Font family: AnekDevanagari-SemiExpanded-SemiBold
-  static const String anekDevanagariSemiExpandedSemiBold =
-      'AnekDevanagari-SemiExpanded-SemiBold';
-
-  /// Font family: AnekDevanagari-SemiExpanded-Thin
-  static const String anekDevanagariSemiExpandedThin =
-      'AnekDevanagari-SemiExpanded-Thin';
-
-  /// Font family: AnekDevanagari-Thin
-  static const String anekDevanagariThin = 'AnekDevanagari-Thin';
+  /// Font family: Poppins-ThinItalic
+  static const String poppinsThinItalic = 'Poppins-ThinItalic';
 }

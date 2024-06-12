@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rive/rive.dart';
 import 'package:task_earn/app/config/app_colors.dart';
 import 'package:task_earn/app/config/strings.dart';
+import 'package:task_earn/app/services/input_formator.dart';
 import 'package:task_earn/gen/assets.gen.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 import 'package:task_earn/presentation/common_widgets/common_text_field.dart';
@@ -38,10 +39,10 @@ class LoginPage extends GetView<LoginController> {
                   Text(
                     Strings.strLogin,
                     style: TextStyle(
-                        fontFamily: FontFamily.anekDevanagariBold,
+                        fontFamily: FontFamily.poppinsBold,
                         fontSize: 22,
                         color: AppColors.whiteColor),
-                  ).paddingOnly(left: 5, bottom: 10),
+                  ).paddingOnly(left: 5, bottom: 15),
                   Row(
                     children: [
                       GestureDetector(
@@ -80,14 +81,16 @@ class LoginPage extends GetView<LoginController> {
                           alignment: Alignment.center,
                           margin: const EdgeInsets.only(right: 13),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(25),
                               border: Border.all(
                                 color: AppColors.whiteColor,
                               )),
                           child: Obx(
                             () => Text(
                               controller.countryCode.value,
-                              style: const TextStyle(fontSize: 18),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: FontFamily.poppinsSemiBold),
                             ),
                           ),
                         ),
@@ -96,6 +99,7 @@ class LoginPage extends GetView<LoginController> {
                         child: CommonTextField(
                           controller: controller.mobileNumberController,
                           hintText: Strings.strMobileNumber,
+                          inputFormatters: [DigitOnlyFormatter()],
                         ),
                       ),
                     ],
@@ -106,7 +110,9 @@ class LoginPage extends GetView<LoginController> {
                   GestureDetector(
                     onTap: () {
                       if (!controller.btnController.isActive) {
-                        Future.delayed(const Duration(seconds: 1), () {});
+                        Future.delayed(const Duration(seconds: 1), () {
+                          controller.onLogin();
+                        });
                       }
                       controller.btnController.isActive = true;
                     },
@@ -133,11 +139,11 @@ class LoginPage extends GetView<LoginController> {
                                       Text(Strings.strLogin,
                                               style: TextStyle(
                                                   fontSize: 22,
-                                                  fontFamily: FontFamily
-                                                      .anekDevanagariBold,
+                                                  fontFamily:
+                                                      FontFamily.poppinsBold,
                                                   color: AppColors
                                                       .primaryDarkColor))
-                                          .paddingOnly(top: 5, right: 5),
+                                          .paddingOnly(right: 5),
                                       Icon(
                                         Icons.arrow_forward_ios_rounded,
                                         color: AppColors.primaryDarkColor,

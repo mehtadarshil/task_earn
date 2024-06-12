@@ -88,7 +88,7 @@ class MyApp extends StatelessWidget {
                             Strings.strNoInternetAvailable,
                             overflow: TextOverflow.fade,
                             style: TextStyle(
-                                fontFamily: FontFamily.anekDevanagariBold,
+                                fontFamily: FontFamily.poppinsBold,
                                 color: AppColors.whiteColor,
                                 fontSize: 18),
                           ),

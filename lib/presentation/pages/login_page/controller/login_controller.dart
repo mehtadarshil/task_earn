@@ -5,6 +5,7 @@ import 'package:rive/rive.dart';
 import 'package:task_earn/app/config/error_codes.dart';
 import 'package:task_earn/app/config/event_tag.dart';
 import 'package:task_earn/app/config/strings.dart';
+import 'package:task_earn/app/routes/route_const.dart';
 import 'package:task_earn/app/services/app_component.dart';
 import 'package:task_earn/app/services/snackbar_util.dart';
 
@@ -33,11 +34,11 @@ class LoginController extends GetxController {
         codeAutoRetrievalTimeout: (String verificationId) {},
         codeSent: (String verificationId, int? forceResendingToken) {
           AppBaseComponent.instance.stopLoading();
-          // Get.toNamed(RoutesConsts.verifypage, arguments: {
-          //   'number': "$countryCode ${numberController.text}",
-          //   'id': verificationId,
-          //   "forceResendingToken": forceResendingToken
-          // });
+          Get.toNamed(RouteConst.verifyOtpPage, arguments: {
+            'number': "$countryCode ${mobileNumberController.text}",
+            'id': verificationId,
+            "forceResendingToken": forceResendingToken
+          });
         },
         verificationCompleted: (PhoneAuthCredential phoneAuthCredential) {},
         verificationFailed: (FirebaseAuthException error) {

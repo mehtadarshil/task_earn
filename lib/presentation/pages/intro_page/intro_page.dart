@@ -46,8 +46,7 @@ class _IntroPageState extends State<IntroPage> {
                 const Text(
                   Strings.strIntroTile,
                   style: TextStyle(
-                      fontFamily: FontFamily.anekDevanagariCondensedBold,
-                      fontSize: 34),
+                      fontFamily: FontFamily.poppinsBold, fontSize: 34),
                 ).paddingOnly(top: 25, left: 10, right: 10),
                 const Expanded(child: SizedBox()),
                 GestureDetector(
@@ -81,11 +80,11 @@ class _IntroPageState extends State<IntroPage> {
                                     Text(Strings.strLetStart,
                                             style: TextStyle(
                                                 fontSize: 22,
-                                                fontFamily: FontFamily
-                                                    .anekDevanagariBold,
+                                                fontFamily:
+                                                    FontFamily.poppinsBold,
                                                 color:
                                                     AppColors.primaryDarkColor))
-                                        .paddingOnly(top: 5, right: 5),
+                                        .paddingOnly(right: 5),
                                     Icon(
                                       Icons.arrow_forward_ios_rounded,
                                       color: AppColors.primaryDarkColor,
