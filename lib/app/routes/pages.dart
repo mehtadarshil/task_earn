@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_earn/app/routes/bindings/dashboard_bindings.dart';
 import 'package:task_earn/app/routes/bindings/login_bindings.dart';
 import 'package:task_earn/app/routes/bindings/verify_otp_bindings.dart';
 import 'package:task_earn/app/routes/route_const.dart';
 import 'package:task_earn/app/services/app_component.dart';
+import 'package:task_earn/presentation/pages/dashboard_page/dashboard_page.dart';
 import 'package:task_earn/presentation/pages/intro_page/intro_page.dart';
 import 'package:task_earn/presentation/pages/login_page/login_page.dart';
 import 'package:task_earn/presentation/pages/verify_otp_page/verify_otp_page.dart';
@@ -21,7 +23,11 @@ class Pages {
     getPage(
         name: RouteConst.verifyOtpPage,
         page: const VerifyOtpPage(),
-        binding: VerifyOtpBindings())
+        binding: VerifyOtpBindings()),
+    getPage(
+        name: RouteConst.dashboardPage,
+        page: const DashboardPage(),
+        binding: DashboardBindings())
   ];
 }
 

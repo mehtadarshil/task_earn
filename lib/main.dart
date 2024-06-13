@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:task_earn/app/config/app_colors.dart';
+import 'package:task_earn/app/config/dbkeys.dart';
 import 'package:task_earn/app/config/strings.dart';
 import 'package:task_earn/app/routes/pages.dart';
 import 'package:task_earn/app/routes/route_const.dart';
@@ -11,6 +13,7 @@ import 'package:task_earn/gen/fonts.gen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -28,7 +31,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: AppColors.primaryDarkColor,
           primaryColor: AppColors.primaryLightColor),
-      initialRoute: RouteConst.initial,
+      initialRoute: GetStorage().read(Dbkeys.userData) != null
+          ? RouteConst.dashboardPage
+          : RouteConst.initial,
       getPages: Pages.pages,
       builder: (context, child) {
         return Stack(

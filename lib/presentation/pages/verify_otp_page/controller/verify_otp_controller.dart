@@ -3,11 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:task_earn/app/config/dbkeys.dart';
 import 'package:task_earn/app/config/error_codes.dart';
 import 'package:task_earn/app/config/strings.dart';
+import 'package:task_earn/app/routes/route_const.dart';
 import 'package:task_earn/app/services/app_component.dart';
 import 'package:task_earn/app/services/logger.dart';
 import 'package:task_earn/app/services/snackbar_util.dart';
+import 'package:task_earn/models/user_model.dart';
 
 class VerifyOtpController extends GetxController {
   final number = Get.arguments['number'];
@@ -63,7 +67,16 @@ class VerifyOtpController extends GetxController {
             .doc(FirebaseAuth.instance.currentUser?.uid)
             .get();
         if (userData.exists) {
+          await GetStorage().write(Dbkeys.userData, userData.data());
+          Get.offAllNamed(RouteConst.dashboardPage);
+          AppBaseComponent.instance.stopLoading();
         } else {
+          await FirebaseFirestore.instance
+              .collection("users")
+              .doc(FirebaseAuth.instance.currentUser?.uid)
+              .set(UserModel(uid: FirebaseAuth.instance.currentUser?.uid)
+                  .toJson());
+          Get.offAllNamed(RouteConst.dashboardPage);
           AppBaseComponent.instance.stopLoading();
         }
       } on FirebaseAuthException catch (e) {
