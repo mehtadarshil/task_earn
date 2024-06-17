@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
 import 'package:task_earn/app/config/app_colors.dart';
+import 'package:task_earn/app/routes/route_const.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 
 class SnackBarUtil {
@@ -18,17 +21,21 @@ class SnackBarUtil {
             fontSize: 15,
             fontFamily: FontFamily.poppinsSemiBold),
       ),
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      margin: EdgeInsets.only(
+          left: 10,
+          right: 10,
+          bottom: Get.currentRoute != RouteConst.dashboardPage ? 10 : 70.h),
       animationDuration: const Duration(milliseconds: 600),
       duration: duration ?? const Duration(seconds: 6),
       snackPosition: SnackPosition.BOTTOM,
       borderRadius: 20,
       boxShadows: [
-        BoxShadow(color: AppColors.whiteColor.withOpacity(0.3), blurRadius: 10)
+        BoxShadow(
+            color: AppColors.primaryDarkColor.withOpacity(0.3), blurRadius: 10)
       ],
       barBlur: 0,
       backgroundColor: (success ?? false)
-          ? AppColors.primaryDarkColor
+          ? AppColors.secondaryDarkColor
           : AppColors.primaryLightColor,
       snackStyle: SnackStyle.FLOATING,
 

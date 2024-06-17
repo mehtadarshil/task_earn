@@ -11,6 +11,7 @@ import 'package:task_earn/app/routes/route_const.dart';
 import 'package:task_earn/app/services/app_component.dart';
 import 'package:task_earn/app/services/logger.dart';
 import 'package:task_earn/app/services/snackbar_util.dart';
+import 'package:task_earn/app/services/static_data_provider.dart';
 import 'package:task_earn/models/user_model.dart';
 
 class VerifyOtpController extends GetxController {
@@ -74,7 +75,9 @@ class VerifyOtpController extends GetxController {
           await FirebaseFirestore.instance
               .collection("users")
               .doc(FirebaseAuth.instance.currentUser?.uid)
-              .set(UserModel(uid: FirebaseAuth.instance.currentUser?.uid)
+              .set(UserModel(
+                      uid: FirebaseAuth.instance.currentUser?.uid,
+                      category: StaticDataProvider.categoryList)
                   .toJson());
           Get.offAllNamed(RouteConst.dashboardPage);
           AppBaseComponent.instance.stopLoading();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task_earn/app/config/app_colors.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 
@@ -8,10 +9,12 @@ class CommonTextField extends StatelessWidget {
       {super.key,
       required this.controller,
       required this.hintText,
-      this.inputFormatters});
+      this.inputFormatters,
+      this.prefixIcon});
   final TextEditingController controller;
   final String hintText;
   final List<TextInputFormatter>? inputFormatters;
+  final Widget? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +26,10 @@ class CommonTextField extends StatelessWidget {
         maxLines: null,
         inputFormatters: inputFormatters,
         cursorColor: AppColors.primaryLightColor,
-        style: const TextStyle(
-            fontSize: 18, fontFamily: FontFamily.poppinsSemiBold),
+        style:
+            TextStyle(fontSize: 18.sp, fontFamily: FontFamily.poppinsSemiBold),
         decoration: InputDecoration(
+            prefixIcon: prefixIcon,
             labelStyle: TextStyle(color: AppColors.whiteColor.withOpacity(0.5)),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),

@@ -4,14 +4,16 @@ import 'package:task_earn/app/config/app_colors.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 
 class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const CommonAppbar({super.key, this.title});
+  const CommonAppbar({super.key, this.title, this.actions});
 
   final String? title;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
+      forceMaterialTransparency: true,
       backgroundColor: AppColors.primaryDarkColor,
       leading: (ModalRoute.of(context)?.canPop ?? false)
           ? IconButton(
@@ -26,6 +28,7 @@ class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
               style: const TextStyle(fontFamily: FontFamily.poppinsBold),
             )
           : null,
+      actions: actions,
     );
   }
 

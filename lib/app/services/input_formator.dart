@@ -22,3 +22,19 @@ class DigitOnlyFormatter extends TextInputFormatter {
     );
   }
 }
+
+class AmountOnlyFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    final String newText = newValue.text;
+
+    // Remove any non-digit characters
+    final String digitsOnly = newText.replaceAll(RegExp(r'[^0-9,^.]'), '');
+
+    return newValue.copyWith(
+      text: digitsOnly,
+      selection: TextSelection.collapsed(offset: digitsOnly.length),
+    );
+  }
+}

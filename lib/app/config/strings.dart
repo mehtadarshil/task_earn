@@ -15,4 +15,13 @@ class Strings {
   static const strEnterOTPsentto = "Enter OTP sent to ";
   static const strResendOTP = "Resend OTP";
   static const strVerifyOTP = "Verify OTP";
+  static const strHomePage = "Home";
+  static const strExpensePage = "Expense";
+  static const strPlanning = "Planning";
+  static const strProfile = "Profile";
+  static const strAmount = "Amount";
+  static const strAddExpense = "Add Expense";
+  static const strItem = "Item";
+  static const strSubmit = "Submit";
+  static const strCategory = "Category";
 }

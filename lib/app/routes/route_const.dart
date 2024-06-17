@@ -3,4 +3,5 @@ class RouteConst {
   static String loginPage = '/loginPage';
   static String verifyOtpPage = '/verifyOtpPage';
   static String dashboardPage = '/dashboardPage';
+  static String categoryPage = "/categoryPage";
 }
