@@ -32,8 +32,11 @@ class $AssetsImagesGen {
   /// File path: assets/images/coin.png
   AssetGenImage get coin => const AssetGenImage('assets/images/coin.png');
 
+  /// File path: assets/images/smile.png
+  AssetGenImage get smile => const AssetGenImage('assets/images/smile.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [banknotesWorld, coin];
+  List<AssetGenImage> get values => [banknotesWorld, coin, smile];
 }
 
 class Assets {

@@ -10,17 +10,20 @@ class CommonTextField extends StatelessWidget {
       required this.controller,
       required this.hintText,
       this.inputFormatters,
-      this.prefixIcon});
+      this.prefixIcon,
+      this.onTap});
   final TextEditingController controller;
   final String hintText;
   final List<TextInputFormatter>? inputFormatters;
   final Widget? prefixIcon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 64,
       child: TextField(
+        onTap: onTap,
         controller: controller,
         expands: true,
         maxLines: null,
@@ -32,32 +35,32 @@ class CommonTextField extends StatelessWidget {
             prefixIcon: prefixIcon,
             labelStyle: TextStyle(color: AppColors.whiteColor.withOpacity(0.5)),
             errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(25.r),
                 borderSide: BorderSide(
                   color: AppColors.whiteColor,
                 )),
             enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(25.r),
                 borderSide: BorderSide(
                   color: AppColors.whiteColor,
                 )),
             border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(25.r),
                 borderSide: BorderSide(
                   color: AppColors.whiteColor,
                 )),
             focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(25.r),
                 borderSide: BorderSide(
                   color: AppColors.whiteColor,
                 )),
             disabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(25.r),
                 borderSide: BorderSide(
                   color: AppColors.whiteColor,
                 )),
             focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(25.r),
                 borderSide: BorderSide(
                   color: AppColors.whiteColor,
                 )),

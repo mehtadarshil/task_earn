@@ -24,4 +24,12 @@ class Strings {
   static const strItem = "Item";
   static const strSubmit = "Submit";
   static const strCategory = "Category";
+  static const strLimit = "Limit";
+  static const strTitle = "Title";
+  static const strSelectCategoryIcon = "Select category icon";
+  static const strSelectCategoryTitle = "Select category title";
+  static const strAreYouSureYouWantToDelete =
+      "Are you sure you want to delete this?";
+  static const strCancle = "Cancle";
+  static const strConfirm = "Confirm";
 }

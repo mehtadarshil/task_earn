@@ -11,6 +11,7 @@ import 'package:task_earn/app/services/input_formator.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 import 'package:task_earn/presentation/common_widgets/action_button.dart';
 import 'package:task_earn/presentation/common_widgets/category_card.dart';
+import 'package:task_earn/presentation/common_widgets/common_button.dart';
 import 'package:task_earn/presentation/common_widgets/common_text_field.dart';
 import 'package:task_earn/presentation/pages/home_page/controller/home_controller.dart';
 
@@ -74,6 +75,9 @@ class HomePage extends GetView<HomeController> {
               spacing: 10.w,
               runSpacing: 7.h,
               children: controller.categoryList.value
+                  .where(
+                    (element) => element.active ?? false,
+                  )
                   .map(
                     (e) => Obx(
                       () => GestureDetector(
@@ -90,19 +94,10 @@ class HomePage extends GetView<HomeController> {
                   .toList(),
             ),
           ).paddingSymmetric(horizontal: 15.w, vertical: 20.h),
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  elevation: 10,
-                  minimumSize: Size(double.infinity, 45.h),
-                  backgroundColor: AppColors.secondaryDarkColor),
-              onPressed: () {},
-              child: Text(
-                Strings.strSubmit,
-                style: TextStyle(
-                    fontFamily: FontFamily.poppinsSemiBold,
-                    color: AppColors.whiteColor,
-                    fontSize: 17.sp),
-              )).paddingSymmetric(horizontal: 15.w, vertical: 10)
+          CommonButton(
+            title: Strings.strSubmit,
+            onTap: () {},
+          ).paddingSymmetric(horizontal: 15.w, vertical: 10)
         ],
       ),
     );

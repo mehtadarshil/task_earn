@@ -46,11 +46,11 @@ class UserModel {
 }
 
 class Category {
-  final String? id;
-  final String? emoji;
-  final String? name;
-  final int? limit;
-  final bool? active;
+  String? id;
+  String? emoji;
+  String? name;
+  int? limit;
+  bool? active;
 
   Category({this.id, this.emoji, this.name, this.limit, this.active});
 
@@ -58,7 +58,7 @@ class Category {
         id: json["id"],
         emoji: json["emoji"],
         name: json["name"],
-        limit: json["limit"],
+        limit: json["limit"] ?? 0,
         active: json["active"] ?? true,
       );
 
@@ -66,7 +66,7 @@ class Category {
         "id": id,
         "emoji": emoji,
         "name": name,
-        "limit": limit,
+        "limit": limit ?? 0,
         "active": active ?? true
       };
 }

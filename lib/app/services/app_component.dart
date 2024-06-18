@@ -25,7 +25,7 @@ class AppBaseComponent {
   }
 
   void removeEvent(String event) {
-    events.add(event);
+    events.remove(event);
   }
 
   void initNetwork() async {
