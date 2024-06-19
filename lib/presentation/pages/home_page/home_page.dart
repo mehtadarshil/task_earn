@@ -96,7 +96,9 @@ class HomePage extends GetView<HomeController> {
           ).paddingSymmetric(horizontal: 15.w, vertical: 20.h),
           CommonButton(
             title: Strings.strSubmit,
-            onTap: () {},
+            onTap: () {
+              controller.addExpense();
+            },
           ).paddingSymmetric(horizontal: 15.w, vertical: 10)
         ],
       ),

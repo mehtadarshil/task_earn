@@ -32,4 +32,7 @@ class Strings {
       "Are you sure you want to delete this?";
   static const strCancle = "Cancle";
   static const strConfirm = "Confirm";
+  static const strEnterProperAmount = "Enter proper amount";
+  static const strEnterProperItem = "Enter proper item";
+  static const strExpenseAddedSuccessfully = "Expense added successfully";
 }

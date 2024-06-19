@@ -1,9 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:task_earn/app/config/ad_unit_id.dart';
+import 'package:task_earn/app/config/event_tag.dart';
+import 'package:task_earn/app/config/strings.dart';
 import 'package:task_earn/app/repos/user_repo.dart';
+import 'package:task_earn/app/services/app_component.dart';
+import 'package:task_earn/app/services/snackbar_util.dart';
+import 'package:task_earn/models/expense_model.dart';
 import 'package:task_earn/models/user_model.dart';
+import 'package:uuid/uuid.dart';
 
 class HomeController extends GetxController {
   BannerAd? bannerAd;
@@ -36,5 +44,31 @@ class HomeController extends GetxController {
         request: const AdRequest())
       ..load();
     super.onReady();
+  }
+
+  void addExpense() async {
+    if (amountController.text.trim().isEmpty ||
+        double.tryParse(amountController.text.trim()) == null) {
+      SnackBarUtil.showSnackBar(message: Strings.strEnterProperAmount);
+    } else if (itemController.text.trim().isEmpty) {
+      SnackBarUtil.showSnackBar(message: Strings.strEnterProperItem);
+    } else {
+      AppBaseComponent.instance.addEvent(EventTag.addExpense);
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .collection("expense")
+          .add(ExpenseModel(
+                  id: const Uuid().v4(),
+                  amount: double.parse(amountController.text),
+                  categoryId: selectedCategory.value,
+                  createdAt: FieldValue.serverTimestamp(),
+                  item: itemController.text.trim(),
+                  uid: FirebaseAuth.instance.currentUser?.uid)
+              .toJson());
+      SnackBarUtil.showSnackBar(
+          message: Strings.strExpenseAddedSuccessfully, success: true);
+      AppBaseComponent.instance.removeEvent(EventTag.addExpense);
+    }
   }
 }
