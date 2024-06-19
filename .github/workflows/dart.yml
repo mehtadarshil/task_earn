@@ -51,7 +51,10 @@ jobs:
           channel: 'stable'
           architecture: x64
       - run: flutter pub get
-      
+
+      - name: Update Podfile
+        run: |
+          sed -i '' 's/platform :ios, '[0-9.]*'/platform :ios, '13.0'/g' ios/Podfile
 
       - run: pod repo update
         working-directory: ios
