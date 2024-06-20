@@ -25,18 +25,32 @@ class $AssetsAnimationsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/Banknotes-world.jpg
-  AssetGenImage get banknotesWorld =>
-      const AssetGenImage('assets/images/Banknotes-world.jpg');
+  /// File path: assets/images/Manage money-bro.png
+  AssetGenImage get manageMoneyBro =>
+      const AssetGenImage('assets/images/Manage money-bro.png');
 
   /// File path: assets/images/coin.png
   AssetGenImage get coin => const AssetGenImage('assets/images/coin.png');
+
+  /// File path: assets/images/expense.png
+  AssetGenImage get expense => const AssetGenImage('assets/images/expense.png');
+
+  /// File path: assets/images/home.png
+  AssetGenImage get home => const AssetGenImage('assets/images/home.png');
+
+  /// File path: assets/images/planning.png
+  AssetGenImage get planning =>
+      const AssetGenImage('assets/images/planning.png');
+
+  /// File path: assets/images/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
 
   /// File path: assets/images/smile.png
   AssetGenImage get smile => const AssetGenImage('assets/images/smile.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [banknotesWorld, coin, smile];
+  List<AssetGenImage> get values =>
+      [manageMoneyBro, coin, expense, home, planning, profile, smile];
 }
 
 class Assets {

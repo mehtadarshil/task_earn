@@ -8,9 +8,11 @@ import 'package:task_earn/app/config/event_tag.dart';
 import 'package:task_earn/app/config/strings.dart';
 import 'package:task_earn/app/repos/user_repo.dart';
 import 'package:task_earn/app/services/app_component.dart';
+import 'package:task_earn/app/services/logger.dart';
 import 'package:task_earn/app/services/snackbar_util.dart';
 import 'package:task_earn/models/expense_model.dart';
 import 'package:task_earn/models/user_model.dart';
+import 'package:task_earn/presentation/pages/dashboard_page/controller/dashboard_controller.dart';
 import 'package:uuid/uuid.dart';
 
 class HomeController extends GetxController {
@@ -26,7 +28,14 @@ class HomeController extends GetxController {
   void onReady() {
     if (UserRepo.currentUser().category != null &&
         UserRepo.currentUser().category!.isNotEmpty) {
-      selectedCategory.value = UserRepo.currentUser().category?.first.id ?? "";
+      selectedCategory.value = UserRepo.currentUser()
+              .category
+              ?.where(
+                (element) => (element.active ?? false),
+              )
+              .first
+              .id ??
+          "";
     }
     categoryList.value = UserRepo.currentUser().category ?? [];
     bannerAd = BannerAd(
@@ -54,6 +63,12 @@ class HomeController extends GetxController {
       SnackBarUtil.showSnackBar(message: Strings.strEnterProperItem);
     } else {
       AppBaseComponent.instance.addEvent(EventTag.addExpense);
+      try {
+        DashboardController dashboardController = Get.find();
+        dashboardController.showVideoAd();
+      } catch (e) {
+        Logger.prints(e);
+      }
       await FirebaseFirestore.instance
           .collection("users")
           .doc(FirebaseAuth.instance.currentUser?.uid)
@@ -69,6 +84,8 @@ class HomeController extends GetxController {
       SnackBarUtil.showSnackBar(
           message: Strings.strExpenseAddedSuccessfully, success: true);
       AppBaseComponent.instance.removeEvent(EventTag.addExpense);
+      amountController.clear();
+      itemController.clear();
     }
   }
 }

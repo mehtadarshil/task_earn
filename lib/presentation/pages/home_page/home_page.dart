@@ -48,7 +48,18 @@ class HomePage extends GetView<HomeController> {
               )),
               ActionButton(
                 onTap: () {
-                  Get.toNamed(RouteConst.categoryPage);
+                  Get.toNamed(RouteConst.categoryPage)?.then(
+                    (value) {
+                      controller.selectedCategory.value =
+                          controller.categoryList
+                                  .where(
+                                    (element) => element.active ?? false,
+                                  )
+                                  .first
+                                  .id ??
+                              "";
+                    },
+                  );
                 },
                 icon: Icon(
                   Icons.menu_rounded,
@@ -60,7 +71,6 @@ class HomePage extends GetView<HomeController> {
           ).paddingSymmetric(horizontal: 15.w, vertical: 20.h),
           CommonTextField(
                   controller: controller.amountController,
-                  prefixIcon: const Icon(Icons.attach_money_rounded),
                   inputFormatters: [AmountOnlyFormatter()],
                   hintText: Strings.strAmount)
               .paddingSymmetric(horizontal: 15.w, vertical: 10.h),

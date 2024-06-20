@@ -71,32 +71,41 @@ class VerifyOtpPage extends GetView<VerifyOtpController> {
             initialData: const Duration(minutes: 3),
             stream: controller.countdownStream,
             builder: (context, snapshot) {
-              return Column(
-                children: [
-                  snapshot.data!.inSeconds != 0
-                      ? Text(
-                          "${snapshot.data.toString().split(":").elementAt(1)}:${snapshot.data.toString().split(":").elementAt(2).split(".").elementAt(0)}",
-                          style: const TextStyle(),
-                        ).paddingOnly(bottom: 16)
-                      : const SizedBox.shrink(),
-                  GestureDetector(
-                    onTap: () {
-                      if (snapshot.data!.inSeconds == 0) {
-                        controller.resendOtp();
-                      }
-                    },
-                    child: Text(
-                      Strings.strResendOTP,
-                      style: TextStyle(
-                          color: snapshot.data!.inSeconds == 0
-                              ? AppColors.primaryLightColor
-                              : AppColors.whiteColor),
+              return SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    snapshot.data!.inSeconds != 0
+                        ? Text(
+                            "${snapshot.data.toString().split(":").elementAt(1)}:${snapshot.data.toString().split(":").elementAt(2).split(".").elementAt(0)}",
+                            style: const TextStyle(),
+                          ).paddingOnly(bottom: 16)
+                        : const SizedBox.shrink(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            if (snapshot.data!.inSeconds == 0) {
+                              controller.resendOtp();
+                            }
+                          },
+                          child: Text(
+                            Strings.strResendOTP,
+                            style: TextStyle(
+                                color: snapshot.data!.inSeconds == 0
+                                    ? AppColors.primaryLightColor
+                                    : AppColors.whiteColor),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ).paddingOnly(
-                top: 38,
-              );
+                  ],
+                ).paddingOnly(
+                  top: 10,
+                ),
+              ).paddingSymmetric(horizontal: 35);
             },
           ),
         ],

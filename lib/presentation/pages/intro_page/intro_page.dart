@@ -41,14 +41,27 @@ class _IntroPageState extends State<IntroPage> {
           )),
           Positioned.fill(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  Strings.strIntroTile,
-                  style: TextStyle(
-                      fontFamily: FontFamily.poppinsBold, fontSize: 34),
-                ).paddingOnly(top: 25, left: 10, right: 10),
-                const Expanded(child: SizedBox()),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        Strings.strIntroTile,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: FontFamily.poppinsBold, fontSize: 28),
+                      ).paddingOnly(top: 25, left: 10, right: 10),
+                      const Text(
+                        Strings.strIntroTile2,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: FontFamily.poppinsBold, fontSize: 18),
+                      ).paddingOnly(top: 10, left: 10, right: 10),
+                    ],
+                  ),
+                ),
                 GestureDetector(
                   onTap: () {
                     if (!_btnController.isActive) {

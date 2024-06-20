@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:task_earn/app/config/app_colors.dart';
 import 'package:task_earn/app/config/strings.dart';
+import 'package:task_earn/gen/assets.gen.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 import 'package:task_earn/presentation/pages/dashboard_page/controller/dashboard_controller.dart';
 
@@ -24,7 +25,7 @@ class CommonNavbar extends StatelessWidget {
       child: Row(
         children: [
           Obx(() => NavButton(
-                iconData: Icons.attach_money,
+                iconData: Assets.images.home,
                 title: Strings.strHomePage,
                 isSelected: controller.pageIndex.value == 0,
                 onTap: () {
@@ -34,7 +35,7 @@ class CommonNavbar extends StatelessWidget {
                 },
               )),
           Obx(() => NavButton(
-                iconData: Icons.attach_money,
+                iconData: Assets.images.expense,
                 title: Strings.strExpensePage,
                 isSelected: controller.pageIndex.value == 1,
                 onTap: () {
@@ -44,7 +45,7 @@ class CommonNavbar extends StatelessWidget {
                 },
               )),
           Obx(() => NavButton(
-                iconData: Icons.attach_money,
+                iconData: Assets.images.planning,
                 title: Strings.strPlanning,
                 isSelected: controller.pageIndex.value == 2,
                 onTap: () {
@@ -54,7 +55,7 @@ class CommonNavbar extends StatelessWidget {
                 },
               )),
           Obx(() => NavButton(
-                iconData: Icons.attach_money,
+                iconData: Assets.images.profile,
                 title: Strings.strProfile,
                 isSelected: controller.pageIndex.value == 3,
                 onTap: () {
@@ -77,7 +78,7 @@ class NavButton extends StatelessWidget {
       required this.isSelected,
       required this.onTap});
 
-  final IconData iconData;
+  final AssetGenImage iconData;
   final String title;
   final bool isSelected;
   final VoidCallback onTap;
@@ -93,11 +94,22 @@ class NavButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(
-              iconData,
-              size: 18.sp,
-              color: AppColors.whiteColor.withOpacity(isSelected ? 1 : 0.4),
-            ).paddingOnly(bottom: 2.h),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 250),
+              width: isSelected ? (MediaQuery.of(context).size.width / 4) : 0,
+              height: 4.h,
+              decoration: BoxDecoration(
+                  color: AppColors.primaryLightColor,
+                  borderRadius: BorderRadius.circular(5.r)),
+            ).paddingSymmetric(horizontal: 20.w).paddingOnly(bottom: 5.h),
+            iconData
+                .image(
+                    height: 20.h,
+                    width: 20.w,
+                    color: isSelected
+                        ? AppColors.whiteColor
+                        : AppColors.whiteColor.withOpacity(0.4))
+                .paddingOnly(bottom: 2.h),
             Text(
               title,
               maxLines: 1,
@@ -109,15 +121,7 @@ class NavButton extends StatelessWidget {
                 fontSize: 11.sp,
                 color: AppColors.whiteColor.withOpacity(isSelected ? 1 : 0.4),
               ),
-            ).paddingOnly(bottom: 3.h),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 250),
-              width: isSelected ? (MediaQuery.of(context).size.width / 4) : 0,
-              height: 4.h,
-              decoration: BoxDecoration(
-                  color: AppColors.primaryLightColor,
-                  borderRadius: BorderRadius.circular(5.r)),
-            ).paddingSymmetric(horizontal: 18.w)
+            ),
           ],
         ),
       ),

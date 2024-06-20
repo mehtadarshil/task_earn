@@ -27,15 +27,17 @@ class AddEditCategory {
     TextEditingController limitController =
         TextEditingController(text: (category?.limit ?? 0).toString());
 
-    Get.bottomSheet(AddEditCategoryWidget(
-      isShowing: isShowing,
-      emoji: emoji,
-      homeController: homecontroller,
-      limitController: limitController,
-      titleController: titleController,
-      category: category,
-      index: index,
-    ));
+    Get.bottomSheet(
+        AddEditCategoryWidget(
+          isShowing: isShowing,
+          emoji: emoji,
+          homeController: homecontroller,
+          limitController: limitController,
+          titleController: titleController,
+          category: category,
+          index: index,
+        ),
+        isScrollControlled: true);
   }
 }
 

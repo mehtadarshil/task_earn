@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:task_earn/app/config/app_colors.dart';
 import 'package:task_earn/app/config/strings.dart';
 import 'package:task_earn/app/repos/category_repo.dart';
+import 'package:task_earn/app/services/snackbar_util.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 import 'package:task_earn/presentation/common_bottom_sheets/confirmation_sheet.dart';
 import 'package:task_earn/presentation/common_widgets/common_appbar.dart';
@@ -56,14 +57,25 @@ class CategoryPage extends GetView<HomeController> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            ConfirmationSheet.showBottomSheet(
-                              onConfirm: () {
-                                data.active = false;
-                                controller.categoryList.refresh();
-                                CategoryRepo.updateCategory(
-                                    controller.categoryList);
-                              },
-                            );
+                            if (controller.categoryList
+                                    .where(
+                                      (element) => element.active ?? false,
+                                    )
+                                    .length ==
+                                1) {
+                              SnackBarUtil.showSnackBar(
+                                  message:
+                                      Strings.strMinimumOneCategoryIsRequired);
+                            } else {
+                              ConfirmationSheet.showBottomSheet(
+                                onConfirm: () {
+                                  data.active = false;
+                                  controller.categoryList.refresh();
+                                  CategoryRepo.updateCategory(
+                                      controller.categoryList);
+                                },
+                              );
+                            }
                           },
                           child: Container(
                             padding: EdgeInsets.all(4.h),

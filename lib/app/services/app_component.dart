@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
@@ -29,7 +28,7 @@ class AppBaseComponent {
     events.remove(event);
   }
 
-  void initNetwork() async {
+  void startListen() {
     events.listen(
       (data) {
         if (data.isNotEmpty) {
@@ -39,6 +38,9 @@ class AppBaseComponent {
         }
       },
     );
+  }
+
+  void initNetwork() async {
     var initData = await _connectivity.checkConnectivity();
     if (initData.contains(ConnectivityResult.ethernet) ||
         initData.contains(ConnectivityResult.mobile) ||

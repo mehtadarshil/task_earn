@@ -1,7 +1,7 @@
 class Strings {
   static const strNoInternetAvailable = "No Internet Available";
-  static const strIntroTile =
-      "Turn every expense into an opportunity – track, save, and earn with ease!";
+  static const strIntroTile = "Turn every expense into an opportunity";
+  static const strIntroTile2 = "Track, save, and earn with ease!";
   static const strLogin = "Login";
   static const strLetStart = "Let's Start";
   static const strMobileNumber = "Mobile Number";
@@ -35,4 +35,9 @@ class Strings {
   static const strEnterProperAmount = "Enter proper amount";
   static const strEnterProperItem = "Enter proper item";
   static const strExpenseAddedSuccessfully = "Expense added successfully";
+  static const strMinimumOneCategoryIsRequired =
+      "Minimum one category is required";
+  static const strToday = "Today";
+  static const strMonth = "Month";
+  static const strYear = "Year";
 }

@@ -15,7 +15,7 @@ class CustomEmojiPicker extends StatelessWidget {
     return Offstage(
       offstage: !emojiShowing,
       child: SizedBox(
-          height: 180.h,
+          height: 200.h,
           child: EmojiPicker(
               onEmojiSelected: (category, emoji) {
                 onEmojiSelect(emoji);
