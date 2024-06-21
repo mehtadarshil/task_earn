@@ -13,6 +13,7 @@ import 'package:task_earn/app/services/snackbar_util.dart';
 import 'package:task_earn/models/expense_model.dart';
 import 'package:task_earn/models/user_model.dart';
 import 'package:task_earn/presentation/pages/dashboard_page/controller/dashboard_controller.dart';
+import 'package:task_earn/presentation/pages/expense_page/controller/expense_controller.dart';
 import 'package:uuid/uuid.dart';
 
 class HomeController extends GetxController {
@@ -83,6 +84,35 @@ class HomeController extends GetxController {
               .toJson());
       SnackBarUtil.showSnackBar(
           message: Strings.strExpenseAddedSuccessfully, success: true);
+      try {
+        ExpenseController expenseController = Get.find();
+        if (expenseController.tabController.index == 0) {
+          expenseController.from = DateTime(
+              expenseController.selectedDay.value.year,
+              expenseController.selectedDay.value.month,
+              expenseController.selectedDay.value.day);
+          expenseController.to = DateTime(
+              expenseController.selectedDay.value.year,
+              expenseController.selectedDay.value.month,
+              expenseController.selectedDay.value.day + 1);
+          expenseController.getExpenseHistory();
+        } else if (expenseController.tabController.index == 1) {
+          expenseController.from = DateTime(
+              expenseController.selectedYear.value,
+              expenseController.selectedMonth.value);
+          expenseController.to = DateTime(expenseController.selectedYear.value,
+              expenseController.selectedMonth.value + 1);
+          expenseController.getExpenseHistory();
+        } else if (expenseController.tabController.index == 2) {
+          expenseController.from =
+              DateTime(expenseController.selectedYear.value);
+          expenseController.to =
+              DateTime(expenseController.selectedYear.value + 1);
+          expenseController.getExpenseHistory();
+        }
+      } catch (e) {
+        Logger.prints(e);
+      }
       AppBaseComponent.instance.removeEvent(EventTag.addExpense);
       amountController.clear();
       itemController.clear();

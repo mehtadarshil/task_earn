@@ -14,8 +14,7 @@ class ExpenseController extends GetxController
   RxList<ExpenseModel> expenseList = <ExpenseModel>[].obs;
   RxDouble total = 0.0.obs;
 
-  List<DateTime> years =
-      List.generate(6, (index) => DateTime(DateTime.now().year - index));
+  List<int> years = List.generate(6, (index) => DateTime.now().year - index);
   RxInt selectedYear = DateTime.now().year.obs;
   RxInt selectedMonth = DateTime.now().month.obs;
   Rx<DateTime> selectedDay = DateTime.now().obs;
@@ -38,7 +37,37 @@ class ExpenseController extends GetxController
   @override
   void onInit() {
     tabController = TabController(length: 3, vsync: this);
+    tabController.addListener(
+      () {
+        if (tabController.index == 0 && tabController.indexIsChanging) {
+          from = DateTime(selectedDay.value.year, selectedDay.value.month,
+              selectedDay.value.day);
+          to = DateTime(selectedDay.value.year, selectedDay.value.month,
+              selectedDay.value.day + 1);
+          getExpenseHistory();
+        } else if (tabController.index == 1 && tabController.indexIsChanging) {
+          from = DateTime(selectedYear.value, selectedMonth.value);
+          to = DateTime(selectedYear.value, selectedMonth.value + 1);
+          getExpenseHistory();
+        } else if (tabController.index == 2 && tabController.indexIsChanging) {
+          from = DateTime(selectedYear.value);
+          to = DateTime(selectedYear.value + 1);
+          getExpenseHistory();
+        }
+      },
+    );
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    from =
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+    to = DateTime(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day + 1);
+
+    getExpenseHistory();
+    super.onReady();
   }
 
   void getExpenseHistory() async {
