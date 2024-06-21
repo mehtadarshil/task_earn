@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:task_earn/app/config/app_colors.dart';
 import 'package:task_earn/app/config/strings.dart';
+import 'package:task_earn/gen/assets.gen.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 import 'package:task_earn/presentation/pages/expense_page/controller/expense_controller.dart';
 import 'package:task_earn/presentation/pages/expense_page/widgets/expense_card.dart';
@@ -221,6 +222,29 @@ class ExpensePage extends GetView<ExpenseController> {
                     ],
                   )
                 ])).paddingSymmetric(horizontal: 15.w),
+        Container(
+          decoration: BoxDecoration(
+            color: AppColors.secondaryDarkColor,
+            borderRadius: BorderRadius.circular(25.r),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  "${Strings.strTotal} :",
+                  style: TextStyle(
+                      fontFamily: FontFamily.poppinsSemiBold, fontSize: 16.sp),
+                ),
+              ),
+              Obx(() => Text(
+                    controller.total.value.toString(),
+                    style: TextStyle(
+                        fontFamily: FontFamily.poppinsSemiBold,
+                        fontSize: 16.sp),
+                  ))
+            ],
+          ).paddingSymmetric(horizontal: 15.w, vertical: 10.h),
+        ).paddingSymmetric(horizontal: 15.w),
         Expanded(
             child: Obx(
           () => controller.expenseList.isNotEmpty
@@ -232,7 +256,24 @@ class ExpensePage extends GetView<ExpenseController> {
                         expenseModel: data, controller: Get.find());
                   },
                 )
-              : const SizedBox.shrink(),
+              : Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Assets.images.noExpense
+                          .image(
+                              height: MediaQuery.of(context).size.width * 0.25,
+                              color: AppColors.whiteColor)
+                          .paddingOnly(bottom: 10.h),
+                      Text(
+                        Strings.strNoExpenseFound,
+                        style: TextStyle(
+                            fontFamily: FontFamily.poppinsBold,
+                            fontSize: 18.sp),
+                      )
+                    ],
+                  ),
+                ),
         ))
       ],
     );

@@ -22,10 +22,20 @@ class AppBaseComponent {
 
   void addEvent(String event) {
     events.add(event);
+    if (events.isNotEmpty) {
+      startLoading();
+    } else {
+      stopLoading();
+    }
   }
 
   void removeEvent(String event) {
     events.remove(event);
+    if (events.isNotEmpty) {
+      startLoading();
+    } else {
+      stopLoading();
+    }
   }
 
   void startListen() {

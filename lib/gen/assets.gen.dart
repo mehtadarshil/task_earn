@@ -38,6 +38,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/home.png
   AssetGenImage get home => const AssetGenImage('assets/images/home.png');
 
+  /// File path: assets/images/no_expense.png
+  AssetGenImage get noExpense =>
+      const AssetGenImage('assets/images/no_expense.png');
+
   /// File path: assets/images/planning.png
   AssetGenImage get planning =>
       const AssetGenImage('assets/images/planning.png');
@@ -49,8 +53,16 @@ class $AssetsImagesGen {
   AssetGenImage get smile => const AssetGenImage('assets/images/smile.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [manageMoneyBro, coin, expense, home, planning, profile, smile];
+  List<AssetGenImage> get values => [
+        manageMoneyBro,
+        coin,
+        expense,
+        home,
+        noExpense,
+        planning,
+        profile,
+        smile
+      ];
 }
 
 class Assets {

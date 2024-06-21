@@ -73,11 +73,13 @@ class ExpenseController extends GetxController
   void getExpenseHistory() async {
     AppBaseComponent.instance.addEvent(EventTag.getExpense);
     expenseList.clear();
+    total.value = 0;
     var expenseJson = await FirebaseFirestore.instance
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("expense")
         .where("createdAt", isGreaterThanOrEqualTo: from, isLessThan: to)
+        .orderBy("createdAt", descending: true)
         .get();
     expenseList.value = expenseJson.docs.map(
       (e) {

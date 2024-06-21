@@ -4,4 +4,5 @@ class EventTag {
   static const categoryAdd = 'categoryAdd';
   static const addExpense = "addExpense";
   static const getExpense = "getExpense";
+  static const logout = "Logout";
 }

@@ -40,4 +40,9 @@ class Strings {
   static const strToday = "Today";
   static const strMonth = "Month";
   static const strYear = "Year";
+  static const strNoExpenseFound = "No Expense Found";
+  static const strTotal = "Total";
+  static const strName = "Name";
+  static const strNoNameFound = "No name found";
+  static const strLogOut = "Log Out";
 }
