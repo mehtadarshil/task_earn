@@ -45,4 +45,11 @@ class Strings {
   static const strName = "Name";
   static const strNoNameFound = "No name found";
   static const strLogOut = "Log Out";
+  static const strExpense = "Expense";
+  static const strIncome = "Income";
+  static const strSavings = "Savings";
+  static const strProfit = "Profit";
+  static const strLoss = "Loss";
+  static const strNoDataFound = "No Data Found";
+  static const strExpenseDetail = "Expense Detail";
 }

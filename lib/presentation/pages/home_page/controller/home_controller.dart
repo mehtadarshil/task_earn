@@ -14,6 +14,7 @@ import 'package:task_earn/models/expense_model.dart';
 import 'package:task_earn/models/user_model.dart';
 import 'package:task_earn/presentation/pages/dashboard_page/controller/dashboard_controller.dart';
 import 'package:task_earn/presentation/pages/expense_page/controller/expense_controller.dart';
+import 'package:task_earn/presentation/pages/expense_plan_page/controller/expense_plan_controller.dart';
 import 'package:uuid/uuid.dart';
 
 class HomeController extends GetxController {
@@ -70,12 +71,14 @@ class HomeController extends GetxController {
       } catch (e) {
         Logger.prints(e);
       }
+      var id = const Uuid().v4();
       await FirebaseFirestore.instance
           .collection("users")
           .doc(FirebaseAuth.instance.currentUser?.uid)
           .collection("expense")
-          .add(ExpenseModel(
-                  id: const Uuid().v4(),
+          .doc(id)
+          .set(ExpenseModel(
+                  id: id,
                   amount: double.parse(amountController.text),
                   categoryId: selectedCategory.value,
                   createdAt: FieldValue.serverTimestamp(),
@@ -110,6 +113,12 @@ class HomeController extends GetxController {
               DateTime(expenseController.selectedYear.value + 1);
           expenseController.getExpenseHistory();
         }
+      } catch (e) {
+        Logger.prints(e);
+      }
+      try {
+        ExpensePlanController expensePlanController = Get.find();
+        expensePlanController.getPlanningData();
       } catch (e) {
         Logger.prints(e);
       }

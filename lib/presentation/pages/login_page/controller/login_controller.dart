@@ -12,7 +12,7 @@ import 'package:task_earn/app/services/snackbar_util.dart';
 class LoginController extends GetxController {
   TextEditingController mobileNumberController = TextEditingController();
   late RiveAnimationController btnController;
-  RxString countryCode = "+1".obs;
+  RxString countryCode = "+91".obs;
 
   @override
   void onInit() {

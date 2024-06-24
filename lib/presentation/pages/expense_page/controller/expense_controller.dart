@@ -90,4 +90,17 @@ class ExpenseController extends GetxController
     ).toList();
     AppBaseComponent.instance.removeEvent(EventTag.getExpense);
   }
+
+  Future updateExpense({required ExpenseModel expenseModel}) async {
+    AppBaseComponent.instance.addEvent(EventTag.updateExpense);
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection("expense")
+        .doc(expenseModel.id)
+        .update(expenseModel.toJson());
+    total.value = expenseList.fold(
+        0.0, (previousValue, element) => previousValue + (element.amount ?? 0));
+    AppBaseComponent.instance.removeEvent(EventTag.updateExpense);
+  }
 }

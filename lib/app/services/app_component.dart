@@ -39,15 +39,15 @@ class AppBaseComponent {
   }
 
   void startListen() {
-    events.listen(
-      (data) {
-        if (data.isNotEmpty) {
-          startLoading();
-        } else {
-          stopLoading();
-        }
-      },
-    );
+    // events.listen(
+    //   (data) {
+    //     if (data.isNotEmpty) {
+    //       startLoading();
+    //     } else {
+    //       stopLoading();
+    //     }
+    //   },
+    // );
   }
 
   void initNetwork() async {

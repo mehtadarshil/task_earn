@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +6,7 @@ import 'package:task_earn/app/config/app_colors.dart';
 import 'package:task_earn/app/config/strings.dart';
 import 'package:task_earn/gen/assets.gen.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
+import 'package:task_earn/presentation/common_bottom_sheets/expense_detail_sheet.dart';
 import 'package:task_earn/presentation/pages/expense_page/controller/expense_controller.dart';
 import 'package:task_earn/presentation/pages/expense_page/widgets/expense_card.dart';
 
@@ -252,8 +250,14 @@ class ExpensePage extends GetView<ExpenseController> {
                   itemCount: controller.expenseList.length,
                   itemBuilder: (context, index) {
                     var data = controller.expenseList[index];
-                    return ExpenseCard(
-                        expenseModel: data, controller: Get.find());
+                    return GestureDetector(
+                      onTap: () {
+                        ExpenseDetailSheet.showBottomSheet(
+                            expenseModel: data, expenseController: controller);
+                      },
+                      child: ExpenseCard(
+                          expenseModel: data, controller: Get.find()),
+                    );
                   },
                 )
               : Center(

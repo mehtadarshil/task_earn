@@ -10,12 +10,12 @@ ExpenseModel expenseModelFromJson(String str) =>
 String expenseModelToJson(ExpenseModel data) => json.encode(data.toJson());
 
 class ExpenseModel {
-  final String? id;
-  final String? uid;
-  final double? amount;
-  final String? item;
-  final String? categoryId;
-  final dynamic createdAt;
+  String? id;
+  String? uid;
+  double? amount;
+  String? item;
+  String? categoryId;
+  dynamic createdAt;
 
   ExpenseModel({
     this.id,

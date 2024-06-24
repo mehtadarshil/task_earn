@@ -27,7 +27,7 @@ class DashboardController extends GetxController {
 
   @override
   void onReady() {
-    showVideoAd();
+    // showVideoAd();
     super.onReady();
   }
 
@@ -43,8 +43,8 @@ class DashboardController extends GetxController {
                 Logger.prints("Ad showed");
               },
               onAdImpression: (ad) {
-                var user = UserRepo.currentUser();
-                UserRepo.updateUserCoins(coins: (user.coins ?? 0) + 3);
+                // var user = UserRepo.currentUser();
+                // UserRepo.updateUserCoins(coins: (user.coins ?? 0) + 3);
               },
               onAdClicked: (ad) {
                 var user = UserRepo.currentUser();
@@ -54,7 +54,7 @@ class DashboardController extends GetxController {
             ad.show(
               onUserEarnedReward: (ad, reward) {
                 var user = UserRepo.currentUser();
-                UserRepo.updateUserCoins(coins: (user.coins ?? 0) + 15);
+                UserRepo.updateUserCoins(coins: (user.coins ?? 0) + 10);
               },
             );
           },
