@@ -33,7 +33,7 @@ class LoginController extends GetxController {
         phoneNumber: "${countryCode.value}${mobileNumberController.text}",
         codeAutoRetrievalTimeout: (String verificationId) {},
         codeSent: (String verificationId, int? forceResendingToken) {
-          AppBaseComponent.instance.stopLoading();
+          AppBaseComponent.instance.removeEvent(EventTag.login);
           Get.toNamed(RouteConst.verifyOtpPage, arguments: {
             'number': "$countryCode ${mobileNumberController.text}",
             'id': verificationId,
@@ -43,6 +43,7 @@ class LoginController extends GetxController {
         verificationCompleted: (PhoneAuthCredential phoneAuthCredential) {},
         verificationFailed: (FirebaseAuthException error) {
           AppBaseComponent.instance.stopLoading();
+          AppBaseComponent.instance.events.clear();
           if (error.code == ErrorCodes.invalidNumber) {
             SnackBarUtil.showSnackBar(
                 message: Strings.strYouEnteredInvalidNumber);

@@ -8,7 +8,7 @@ class AppBaseComponent {
   final Connectivity _connectivity = Connectivity();
 
   RxBool completed = true.obs;
-  RxList<String> events = <String>[].obs;
+  List<String> events = <String>[];
   static final AppBaseComponent instance =
       AppBaseComponent._privateConstructor()..initNetwork();
 

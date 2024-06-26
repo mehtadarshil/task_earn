@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,7 @@ import 'package:task_earn/gen/fonts.gen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  await MobileAds.instance.initialize();
+  // await MobileAds.instance.initialize();
   await ScreenUtil.ensureScreenSize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: kIsWeb ? const Size(1024, 768) : const Size(360, 690),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(

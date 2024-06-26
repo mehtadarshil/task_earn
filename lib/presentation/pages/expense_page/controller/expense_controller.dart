@@ -103,4 +103,20 @@ class ExpenseController extends GetxController
         0.0, (previousValue, element) => previousValue + (element.amount ?? 0));
     AppBaseComponent.instance.removeEvent(EventTag.updateExpense);
   }
+
+  Future deleteExpense({required ExpenseModel expenseModel}) async {
+    AppBaseComponent.instance.addEvent(EventTag.deleteExpense);
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection("expense")
+        .doc(expenseModel.id)
+        .delete();
+    expenseList.removeWhere(
+      (element) => element.id == expenseModel.id,
+    );
+    total.value -= expenseModel.amount ?? 0;
+    expenseList.refresh();
+    AppBaseComponent.instance.removeEvent(EventTag.deleteExpense);
+  }
 }

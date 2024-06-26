@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:task_earn/app/config/app_colors.dart';
 import 'package:task_earn/app/config/strings.dart';
@@ -20,6 +21,7 @@ class TableDataWidget extends StatefulWidget {
     required this.onAdd,
     required this.onUpdate,
     required this.isReadOnly,
+    required this.onDelete,
   });
 
   final String title;
@@ -28,6 +30,7 @@ class TableDataWidget extends StatefulWidget {
   final Function(ExpenseModel data) onAdd;
   final Function(ExpenseModel data) onUpdate;
   final bool isReadOnly;
+  final Function(ExpenseModel data) onDelete;
 
   @override
   State<TableDataWidget> createState() => _TableDataWidgetState();
@@ -109,72 +112,108 @@ class _TableDataWidgetState extends State<TableDataWidget> {
                           decoration: BoxDecoration(
                               color: AppColors.secondaryDarkColor),
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                Get.focusScope?.unfocus();
-                                titleFocusNode.requestFocus();
-                              },
-                              child: Container(
-                                color: Colors.transparent,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 15.w, vertical: 14.h),
-                                child: EditableText(
-                                    controller: titleController,
-                                    focusNode: titleFocusNode,
-                                    readOnly: widget.isReadOnly,
-                                    onSubmitted: (value) {
-                                      amountFocusNode.requestFocus();
-                                    },
-                                    style: TextStyle(
-                                        fontFamily: FontFamily.poppinsMedium,
-                                        fontSize: 15.sp),
-                                    cursorColor: AppColors.primaryLightColor,
-                                    backgroundCursorColor:
-                                        AppColors.primaryLightColor),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Get.focusScope?.unfocus();
-                                amountFocusNode.requestFocus();
-                              },
-                              child: Container(
-                                color: Colors.transparent,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 15.w, vertical: 14.h),
-                                child: EditableText(
-                                    controller: amountController,
-                                    focusNode: amountFocusNode,
-                                    readOnly: widget.isReadOnly,
-                                    textAlign: TextAlign.end,
-                                    onSubmitted: (value) {
-                                      if (titleController.text
-                                              .trim()
-                                              .isNotEmpty &&
-                                          amountController.text
-                                              .trim()
-                                              .isNotEmpty &&
-                                          double.tryParse(
-                                                  amountController.text) !=
-                                              null) {
-                                        element.item =
-                                            titleController.text.trim();
-                                        element.amount =
-                                            double.parse(amountController.text);
-                                        widget.onUpdate(element);
-                                      }
-                                      isAdded.value = false;
-                                      Get.focusScope?.unfocus();
-                                      amountController.clear();
-                                      titleController.clear();
-                                    },
-                                    inputFormatters: [AmountOnlyFormatter()],
-                                    style: TextStyle(
-                                        fontFamily: FontFamily.poppinsMedium,
-                                        fontSize: 15.sp),
-                                    cursorColor: AppColors.primaryLightColor,
-                                    backgroundCursorColor:
-                                        AppColors.primaryLightColor),
+                            Slidable(
+                              groupTag: "Tables",
+                              key: ValueKey(element.id),
+                              closeOnScroll: true,
+                              direction: Axis.horizontal,
+                              endActionPane: widget.isReadOnly
+                                  ? null
+                                  : ActionPane(
+                                      motion: const BehindMotion(),
+                                      children: [
+                                          SlidableAction(
+                                            onPressed: (_) {
+                                              widget.onDelete(element);
+                                            },
+                                            backgroundColor:
+                                                AppColors.primaryLightColor,
+                                            autoClose: true,
+                                            icon: Icons.delete_forever_rounded,
+                                          )
+                                        ]),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Get.focusScope?.unfocus();
+                                        titleFocusNode.requestFocus();
+                                      },
+                                      child: Container(
+                                        color: Colors.transparent,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 15.w, vertical: 14.h),
+                                        child: EditableText(
+                                            controller: titleController,
+                                            focusNode: titleFocusNode,
+                                            readOnly: widget.isReadOnly,
+                                            onSubmitted: (value) {
+                                              amountFocusNode.requestFocus();
+                                            },
+                                            style: TextStyle(
+                                                fontFamily:
+                                                    FontFamily.poppinsMedium,
+                                                fontSize: 15.sp),
+                                            cursorColor:
+                                                AppColors.primaryLightColor,
+                                            backgroundCursorColor:
+                                                AppColors.primaryLightColor),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Get.focusScope?.unfocus();
+                                        amountFocusNode.requestFocus();
+                                      },
+                                      child: Container(
+                                        color: Colors.transparent,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 15.w, vertical: 14.h),
+                                        child: EditableText(
+                                            controller: amountController,
+                                            focusNode: amountFocusNode,
+                                            readOnly: widget.isReadOnly,
+                                            textAlign: TextAlign.end,
+                                            onSubmitted: (value) {
+                                              if (titleController.text
+                                                      .trim()
+                                                      .isNotEmpty &&
+                                                  amountController.text
+                                                      .trim()
+                                                      .isNotEmpty &&
+                                                  double.tryParse(
+                                                          amountController
+                                                              .text) !=
+                                                      null) {
+                                                element.item =
+                                                    titleController.text.trim();
+                                                element.amount = double.parse(
+                                                    amountController.text);
+                                                widget.onUpdate(element);
+                                              }
+                                              isAdded.value = false;
+                                              Get.focusScope?.unfocus();
+                                              amountController.clear();
+                                              titleController.clear();
+                                            },
+                                            inputFormatters: [
+                                              AmountOnlyFormatter()
+                                            ],
+                                            style: TextStyle(
+                                                fontFamily:
+                                                    FontFamily.poppinsMedium,
+                                                fontSize: 15.sp),
+                                            cursorColor:
+                                                AppColors.primaryLightColor,
+                                            backgroundCursorColor:
+                                                AppColors.primaryLightColor),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ]);

@@ -136,6 +136,9 @@ class ExpensePlanPage extends GetView<ExpensePlanController> {
                     controller.updateIncome(data: data);
                   },
                   isReadOnly: false,
+                  onDelete: (ExpenseModel data) {
+                    controller.deleteTableIncome(expenseModel: data);
+                  },
                 ),
               ),
               Obx(() => controller.nativeAd.value != null
@@ -167,6 +170,9 @@ class ExpensePlanPage extends GetView<ExpensePlanController> {
                     controller.updateSavings(data: data);
                   },
                   isReadOnly: false,
+                  onDelete: (ExpenseModel data) {
+                    controller.deleteTableSavings(expenseModel: data);
+                  },
                 ),
               ),
               SizedBox(
@@ -179,6 +185,7 @@ class ExpensePlanPage extends GetView<ExpensePlanController> {
                   total: controller.expensesTotal.value,
                   onAdd: (ExpenseModel data) {},
                   onUpdate: (ExpenseModel data) {},
+                  onDelete: (data) {},
                   isReadOnly: true,
                 ),
               ),

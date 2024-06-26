@@ -94,7 +94,11 @@ class _ExpenseDetailWidgetState extends State<ExpenseDetailWidget> {
                 ),
               ),
               ActionButton(
-                  onTap: () {},
+                  onTap: () async {
+                    await widget.expenseController
+                        .deleteExpense(expenseModel: widget.expenseModel);
+                    Get.close(1);
+                  },
                   icon: Icon(
                     Icons.delete_forever_rounded,
                     color: AppColors.primaryLightColor,

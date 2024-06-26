@@ -202,4 +202,36 @@ class ExpensePlanController extends GetxController {
 
     AppBaseComponent.instance.removeEvent(EventTag.getPlanningData);
   }
+
+  void deleteTableSavings({required ExpenseModel expenseModel}) async {
+    AppBaseComponent.instance.addEvent(EventTag.deleteTableRow);
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection("savings")
+        .doc(expenseModel.id)
+        .delete();
+    savingsData.removeWhere(
+      (element) => element.id == expenseModel.id,
+    );
+    savingsData.refresh();
+    savingsTotal.value -= expenseModel.amount ?? 0;
+    AppBaseComponent.instance.removeEvent(EventTag.deleteTableRow);
+  }
+
+  void deleteTableIncome({required ExpenseModel expenseModel}) async {
+    AppBaseComponent.instance.addEvent(EventTag.deleteTableRow);
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection("income")
+        .doc(expenseModel.id)
+        .delete();
+    incomeData.removeWhere(
+      (element) => element.id == expenseModel.id,
+    );
+    incomeData.refresh();
+    incomeTotal.value -= expenseModel.amount ?? 0;
+    AppBaseComponent.instance.removeEvent(EventTag.deleteTableRow);
+  }
 }
