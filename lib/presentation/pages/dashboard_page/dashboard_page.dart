@@ -40,13 +40,18 @@ class DashboardPage extends GetView<DashboardController> {
                         .doc(FirebaseAuth.instance.currentUser?.uid)
                         .snapshots(),
                     builder: (context, snapshot) {
-                      if (snapshot.hasData) {
+                      if (snapshot.hasData &&
+                          snapshot.data != null &&
+                          !snapshot.hasError) {
                         UserRepo.updateCoinsLocally(
-                            coins: snapshot.data!.get("coins"));
+                            coins: snapshot.data!.get("coins") ?? 0);
                       }
                       return AnimatedDigitWidget(
-                        value:
-                            snapshot.hasData ? snapshot.data!.get("coins") : 0,
+                        value: snapshot.hasData &&
+                                snapshot.data != null &&
+                                !snapshot.hasError
+                            ? (snapshot.data!.get("coins") ?? 0)
+                            : 0,
                         textStyle: TextStyle(
                             color: AppColors.whiteColor,
                             fontFamily: FontFamily.poppinsSemiBold,

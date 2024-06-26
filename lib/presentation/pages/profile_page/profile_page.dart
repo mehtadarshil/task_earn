@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,6 +12,7 @@ import 'package:task_earn/app/config/strings.dart';
 import 'package:task_earn/app/routes/route_const.dart';
 import 'package:task_earn/app/services/app_component.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
+import 'package:task_earn/presentation/common_bottom_sheets/confirmation_sheet.dart';
 import 'package:task_earn/presentation/common_bottom_sheets/name_update_sheet.dart';
 import 'package:task_earn/presentation/pages/profile_page/controller/profile_controller.dart';
 
@@ -59,6 +61,33 @@ class ProfilePage extends GetView<ProfileController> {
                 ],
               ).paddingSymmetric(horizontal: 15.w, vertical: 10.h),
             ).paddingSymmetric(horizontal: 15.w, vertical: 10.h),
+          ),
+          ListTile(
+            onTap: () {
+              ConfirmationSheet.showBottomSheet(
+                  onConfirm: () async {
+                    AppBaseComponent.instance.addEvent(EventTag.deleteUser);
+                    await FirebaseFirestore.instance
+                        .collection("users")
+                        .doc(FirebaseAuth.instance.currentUser?.uid)
+                        .delete();
+                    await FirebaseAuth.instance.signOut();
+                    await GetStorage().remove(Dbkeys.userData);
+                    AppBaseComponent.instance.removeEvent(EventTag.deleteUser);
+                    Get.offAllNamed(RouteConst.loginPage);
+                  },
+                  title: Strings.strDeleteUserTitle);
+            },
+            tileColor: AppColors.secondaryDarkColor,
+            title: Text(
+              Strings.strDeleteAccount,
+              style: TextStyle(
+                  fontFamily: FontFamily.poppinsSemiBold, fontSize: 15.sp),
+            ),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+          ),
+          SizedBox(
+            height: 10.h,
           ),
           ListTile(
             onTap: () async {

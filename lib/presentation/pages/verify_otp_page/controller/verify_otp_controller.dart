@@ -72,13 +72,15 @@ class VerifyOtpController extends GetxController {
           Get.offAllNamed(RouteConst.dashboardPage);
           AppBaseComponent.instance.stopLoading();
         } else {
+          var newUser = UserModel(
+              uid: FirebaseAuth.instance.currentUser?.uid,
+              coins: 0,
+              category: StaticDataProvider.categoryList);
           await FirebaseFirestore.instance
               .collection("users")
               .doc(FirebaseAuth.instance.currentUser?.uid)
-              .set(UserModel(
-                      uid: FirebaseAuth.instance.currentUser?.uid,
-                      category: StaticDataProvider.categoryList)
-                  .toJson());
+              .set(newUser.toJson());
+          await GetStorage().write(Dbkeys.userData, newUser.toJson());
           Get.offAllNamed(RouteConst.dashboardPage);
           AppBaseComponent.instance.stopLoading();
         }

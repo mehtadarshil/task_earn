@@ -12,6 +12,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsAnimationsGen {
   const $AssetsAnimationsGen();
 
+  /// File path: assets/animations/Loader.gif
+  AssetGenImage get loader =>
+      const AssetGenImage('assets/animations/Loader.gif');
+
   /// File path: assets/animations/button.riv
   String get button => 'assets/animations/button.riv';
 
@@ -19,7 +23,7 @@ class $AssetsAnimationsGen {
   String get shapes => 'assets/animations/shapes.riv';
 
   /// List of all assets
-  List<String> get values => [button, shapes];
+  List<dynamic> get values => [loader, button, shapes];
 }
 
 class $AssetsImagesGen {

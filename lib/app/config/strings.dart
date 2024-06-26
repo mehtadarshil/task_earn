@@ -52,4 +52,9 @@ class Strings {
   static const strLoss = "Loss";
   static const strNoDataFound = "No Data Found";
   static const strExpenseDetail = "Expense Detail";
+  static const strEnterProperName = "Enter Proper Name";
+  static const strDeleteUserTitle =
+      "Are you sure you want to delete this user permanently?";
+  static const strDeleteAccount = "Delete Account";
+  static const strUpdateYourName = "Update your name";
 }

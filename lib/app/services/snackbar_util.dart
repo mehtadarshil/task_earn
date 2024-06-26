@@ -24,7 +24,10 @@ class SnackBarUtil {
       margin: EdgeInsets.only(
           left: 10,
           right: 10,
-          bottom: Get.currentRoute != RouteConst.dashboardPage ? 10 : 70.h),
+          bottom: (Get.currentRoute != RouteConst.dashboardPage ||
+                  (Get.isBottomSheetOpen ?? false))
+              ? 10
+              : 70.h),
       animationDuration: const Duration(milliseconds: 600),
       duration: duration ?? const Duration(seconds: 6),
       snackPosition: SnackPosition.BOTTOM,

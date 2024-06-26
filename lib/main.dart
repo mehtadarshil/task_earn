@@ -12,12 +12,15 @@ import 'package:task_earn/app/routes/pages.dart';
 import 'package:task_earn/app/routes/route_const.dart';
 import 'package:task_earn/app/services/app_component.dart';
 import 'package:task_earn/firebase_options.dart';
+import 'package:task_earn/gen/assets.gen.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  // await MobileAds.instance.initialize();
+  if (!kIsWeb) {
+    await MobileAds.instance.initialize();
+  }
   await ScreenUtil.ensureScreenSize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -33,7 +36,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: kIsWeb ? const Size(1024, 768) : const Size(360, 690),
+      designSize: kIsWeb ? const Size(1080, 670) : const Size(360, 690),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
@@ -63,9 +66,8 @@ class MyApp extends StatelessWidget {
                               child: Container(
                                 color: Colors.black.withOpacity(0.3),
                                 child: Center(
-                                  child: CircularProgressIndicator(
-                                    color: AppColors.primaryLightColor,
-                                  ),
+                                  child: Assets.animations.loader
+                                      .image(height: 100.h, width: 100.w),
                                 ),
                               ),
                             ),

@@ -6,6 +6,7 @@ import 'package:task_earn/app/config/strings.dart';
 import 'package:task_earn/app/services/snackbar_util.dart';
 import 'package:task_earn/gen/fonts.gen.dart';
 import 'package:task_earn/models/expense_model.dart';
+import 'package:task_earn/presentation/common_bottom_sheets/confirmation_sheet.dart';
 import 'package:task_earn/presentation/common_widgets/action_button.dart';
 import 'package:task_earn/presentation/common_widgets/category_card.dart';
 import 'package:task_earn/presentation/common_widgets/common_button.dart';
@@ -94,10 +95,14 @@ class _ExpenseDetailWidgetState extends State<ExpenseDetailWidget> {
                 ),
               ),
               ActionButton(
-                  onTap: () async {
-                    await widget.expenseController
-                        .deleteExpense(expenseModel: widget.expenseModel);
-                    Get.close(1);
+                  onTap: () {
+                    ConfirmationSheet.showBottomSheet(
+                      onConfirm: () async {
+                        await widget.expenseController
+                            .deleteExpense(expenseModel: widget.expenseModel);
+                        Get.close(1);
+                      },
+                    );
                   },
                   icon: Icon(
                     Icons.delete_forever_rounded,

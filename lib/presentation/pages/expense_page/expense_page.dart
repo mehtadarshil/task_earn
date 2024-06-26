@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -266,7 +267,8 @@ class ExpensePage extends GetView<ExpenseController> {
                     children: [
                       Assets.images.noExpense
                           .image(
-                              height: MediaQuery.of(context).size.width * 0.25,
+                              height: MediaQuery.of(context).size.width *
+                                  (kIsWeb ? 0.05 : 0.25),
                               color: AppColors.whiteColor)
                           .paddingOnly(bottom: 10.h),
                       Text(

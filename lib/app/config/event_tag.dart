@@ -13,4 +13,6 @@ class EventTag {
   static const updateSavings = "updateSavings";
   static const deleteTableRow = "deleteTableRow";
   static const deleteExpense = "deleteExpense";
+  static const updateUserName = "updateUserName";
+  static const deleteUser = "deleteUser";
 }

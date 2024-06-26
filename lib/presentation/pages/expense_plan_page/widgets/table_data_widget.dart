@@ -152,6 +152,7 @@ class _TableDataWidgetState extends State<TableDataWidget> {
                                               amountFocusNode.requestFocus();
                                             },
                                             style: TextStyle(
+                                                color: AppColors.whiteColor,
                                                 fontFamily:
                                                     FontFamily.poppinsMedium,
                                                 fontSize: 15.sp),
@@ -203,6 +204,7 @@ class _TableDataWidgetState extends State<TableDataWidget> {
                                               AmountOnlyFormatter()
                                             ],
                                             style: TextStyle(
+                                                color: AppColors.whiteColor,
                                                 fontFamily:
                                                     FontFamily.poppinsMedium,
                                                 fontSize: 15.sp),
@@ -254,6 +256,7 @@ class _TableDataWidgetState extends State<TableDataWidget> {
                                     addAmountFocusNode.requestFocus();
                                   },
                                   style: TextStyle(
+                                      color: AppColors.whiteColor,
                                       fontFamily: FontFamily.poppinsMedium,
                                       fontSize: 15.sp),
                                   cursorColor: AppColors.primaryLightColor,
@@ -310,6 +313,7 @@ class _TableDataWidgetState extends State<TableDataWidget> {
                                   },
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
+                                      color: AppColors.whiteColor,
                                       fontFamily: FontFamily.poppinsMedium,
                                       fontSize: 15.sp),
                                   cursorColor: AppColors.primaryLightColor,

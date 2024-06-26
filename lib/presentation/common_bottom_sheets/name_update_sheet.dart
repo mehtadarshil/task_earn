@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:task_earn/app/config/app_colors.dart';
+import 'package:task_earn/app/config/strings.dart';
 import 'package:task_earn/app/repos/user_repo.dart';
+import 'package:task_earn/gen/fonts.gen.dart';
+import 'package:task_earn/presentation/common_widgets/common_button.dart';
+import 'package:task_earn/presentation/common_widgets/common_text_field.dart';
 import 'package:task_earn/presentation/pages/profile_page/controller/profile_controller.dart';
 
 class NameUpdateSheet {
@@ -47,10 +51,27 @@ class NameUpdateWidget extends StatelessWidget {
               decoration: BoxDecoration(
                   color: AppColors.whiteColor,
                   borderRadius: BorderRadius.circular(5.r)),
-            ).paddingOnly(
-              top: 10.h,
-            ),
+            ).paddingOnly(top: 5.h, bottom: 15.h),
           ),
+          Text(
+            Strings.strUpdateYourName,
+            style: TextStyle(
+                fontFamily: FontFamily.poppinsBold,
+                color: AppColors.whiteColor,
+                fontSize: 16.sp),
+          ).paddingOnly(bottom: 10.h),
+          CommonTextField(
+              controller: nameController, hintText: Strings.strName),
+          CommonButton(
+            title: Strings.strSubmit,
+            onTap: () async {
+              await profileController.updateUserName(
+                  updatedName: nameController.text);
+              if (Get.isBottomSheetOpen ?? false) {
+                Get.close(1);
+              }
+            },
+          ).paddingOnly(top: 10.h)
         ],
       ),
     );
