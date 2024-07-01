@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rive/rive.dart';
 import 'package:task_earn/app/config/app_colors.dart';
@@ -40,28 +41,25 @@ class _IntroPageState extends State<IntroPage> {
             child: const SizedBox(),
           )),
           Positioned.fill(
+              child: Container(
+            color: Colors.black.withOpacity(0.45),
+          )),
+          Positioned.fill(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        Strings.strIntroTile,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: FontFamily.poppinsBold, fontSize: 28),
-                      ).paddingOnly(top: 25, left: 10, right: 10),
-                      const Text(
-                        Strings.strIntroTile2,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: FontFamily.poppinsBold, fontSize: 18),
-                      ).paddingOnly(top: 10, left: 10, right: 10),
-                    ],
-                  ),
-                ),
+                const Text(
+                  Strings.strIntroTile,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: FontFamily.poppinsBold, fontSize: 28),
+                ).paddingOnly(top: 25, left: 10, right: 10),
+                const Text(
+                  Strings.strIntroTile2,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: FontFamily.poppinsBold, fontSize: 18),
+                ).paddingOnly(top: 10, left: 10, right: 10, bottom: 25.h),
                 GestureDetector(
                   onTap: () {
                     if (!_btnController.isActive) {
@@ -112,9 +110,6 @@ class _IntroPageState extends State<IntroPage> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 40,
-                )
               ],
             ),
           ),

@@ -34,7 +34,8 @@ class VerifyOtpPage extends GetView<VerifyOtpController> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 19, left: 10, right: 10),
+            padding:
+                const EdgeInsets.only(top: 19, left: 10, right: 10, bottom: 25),
             child: SizedBox(
               height: 60,
               child: Pinput(
@@ -74,13 +75,13 @@ class VerifyOtpPage extends GetView<VerifyOtpController> {
               return SizedBox(
                 width: double.infinity,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     snapshot.data!.inSeconds != 0
                         ? Text(
                             "${snapshot.data.toString().split(":").elementAt(1)}:${snapshot.data.toString().split(":").elementAt(2).split(".").elementAt(0)}",
                             style: const TextStyle(),
-                          ).paddingOnly(bottom: 16)
+                          ).paddingOnly(bottom: 5)
                         : const SizedBox.shrink(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

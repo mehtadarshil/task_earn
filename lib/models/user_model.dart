@@ -11,14 +11,12 @@ String userModelToJson(UserModel data) => json.encode(data.toJson());
 class UserModel {
   String? uid;
   String? name;
-  String? fcmToken;
   int? coins;
   List<Category>? category;
 
   UserModel({
     this.uid,
     this.name,
-    this.fcmToken,
     this.coins,
     this.category,
   });
@@ -26,7 +24,6 @@ class UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         uid: json["uid"],
         name: json["name"],
-        fcmToken: json["fcm_token"],
         coins: json["coins"],
         category: json["category"] == null
             ? []
@@ -37,7 +34,6 @@ class UserModel {
   Map<String, dynamic> toJson() => {
         "uid": uid,
         "name": name,
-        "fcm_token": fcmToken,
         "coins": coins,
         "category": category == null
             ? []

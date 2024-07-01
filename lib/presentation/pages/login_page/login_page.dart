@@ -21,11 +21,10 @@ class LoginPage extends GetView<LoginController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Assets.images.manageMoneyBro.image(
-                  fit: BoxFit.cover,
-                  height: MediaQuery.of(context).size.height * 0.4),
+              Assets.images.manageMoneyBro
+                  .image(height: MediaQuery.of(context).size.height * 0.4),
               const SizedBox(
-                height: 30,
+                height: 10,
               ),
               Container(
                 margin: const EdgeInsets.all(10),
